@@ -1,0 +1,50 @@
+.sidenav {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-right: 10px;
+}
+.sidenav a {
+  padding: 6px 10px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.btn-primary{
+width:100%;
+  margin-top: 3px;
+}
+
+
+
+h4{
+  align-items: center;
+}
+img{
+  height:100%;
+  width: 100%;
+  margin-bottom: 2%;
+}

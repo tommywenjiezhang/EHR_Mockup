@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Bootstrap CSS CDN -->
+      <link rel="stylesheet" href="lib\stylesheet\bootstrap.min.css">
+      <!-- Our Custom CSS -->
+      <link rel="stylesheet" href="style.css">
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+      <!-- Font Awesome JS -->
+      <script src="lib\fontawesome\solid.js" charset="utf-8"></script>
+      <script src="lib\fontawesome\fontawesome.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+  <div class="sidenav">
+    <div class="container">
+      <img src="lib\image\Untitled-1.png" alt="">
+    </div>
+    <input type="text" class= "form-control">
+  </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="jumbotron col-md-8 offset-md-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <table>
+              <tr>
+                <td>
+                  <h4>Patient Name:</h4>
+                </td>
+                <td>
+                  <h4 id="patientname"></h4>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                    <h4>Patient Email:</h4>
+                </td>
+                <td>
+                  <p id="patientEmail"></p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4>Patients's Phone:</h4>
+                </td>
+                <td>
+                  <p id="patientPhone"></p>
+                </td>
+              </tr>
+              <tr>
+                <td>  <h4>Patient DOB:</h4></td>
+                <td><p id="patientDOB"></p> </td>
+              </tr>
+             </table>
+          </div>
+           </div>
+           </div>
+           </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+    <!-- Syptom checker -->
+    <h4>Symptoms</h4>
+    <div >
+      <form id="syptomsdropdown"class="js-form form-group" action="index.html" method="post">
+        <label for="symptom">Symptom</label>
+        <input class="form-control-sm" type="text" name="symptom" value="" list="syptomsresults" autocomplete="on">
+        <label for="date">date</label>
+        <input class="form-control-sm" type="date" class= "date" name="date" value="">
+        <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+    </form>
+      <table class="table" id="syptom">
+          <tr>
+            <th>Syptom</th>
+            <th>Onset Date</th>
+            <th>icd Code</th>
+            <th></th>
+          </tr>
+    </table>
+    <h4>Medication</h4>
+    <div >
+      <form id="medicationdropdown" class="js-form form-group" action="index.html" method="post">
+        <label for="symptom">Medication</label>
+        <input class="form-control-sm" type="text" name="symptom" value="" list="syptomsresults" autocomplete="on">
+        <label for="date">date</label>
+        <input class="form-control-sm" type="date" class= "date" name="date" value="">
+        <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+    </form>
+      <table class="table" id="syptom">
+          <tr>
+            <th>Syptom</th>
+            <th>Onset Date</th>
+            <th>icd Code</th>
+            <th></th>
+          </tr>
+    </table>
+    </div>
+    </div>
+    </div>
+  </div>
+
+
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="lib\javascript\jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="lib\javascript\bootstrap.min.js" charset="utf-8"></script>
+<script src="lib\javascript\jquery.mCustomScrollbar.concat.min.js" charset="utf-8"></script>
+<script src="lib\javascript\popper.min.js" charset="utf-8"></script>
+<<script type="text/javascript" src="style.js">
+</script>
+<script type="text/javascript" src = "symptom.js">
+</script>
+<script type="text/javascript" src = "patientInfo.js">
+</script>
+<script type="text/javascript" src = "home.js">
+</script>
+
+  </body>
+
+</html>
