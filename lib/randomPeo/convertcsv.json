@@ -1,0 +1,62 @@
+[
+ {
+   "A": "Medication",
+   "B": "Dose",
+   "C": "Route"
+ },
+ {
+   "A": "Codeine (only available in generic form)",
+   "B": "12mg",
+   "C": "topical"
+ },
+ {
+   "A": "Fentanyl (Actiq, Duragesic, Fentora, Abstral, Onsolis)",
+   "B": "20mg",
+   "C": "inhalable"
+ },
+ {
+   "A": "Hydrocodone (Hysingla, Zohydro ER)",
+   "B": "15mg",
+   "C": "infused"
+ },
+ {
+   "A": "Hydrocodone/acetaminophen (Lorcet, Lortab, Norco, Vicodin)",
+   "B": "18mg",
+   "C": "intramuscular"
+ },
+ {
+   "A": "Hydromorphone (Dilaudid, Exalgo)",
+   "B": "13mg",
+   "C": "intrathecal"
+ },
+ {
+   "A": "Meperidine (Demerol)",
+   "B": "15mg",
+   "C": "intravenous"
+ },
+ {
+   "A": "Methadone (Dolophine, Methadose)",
+   "B": "12mg",
+   "C": "nasal"
+ },
+ {
+   "A": "Morphine (Kadian, MS Contin, Morphabond)",
+   "B": "13mg",
+   "C": "ophthalmic"
+ },
+ {
+   "A": "Oxycodone (OxyContin, Oxaydo)",
+   "B": "18mg",
+   "C": "oral"
+ },
+ {
+   "A": "Oxycodone and acetaminophen (Percocet, Roxicet)",
+   "B": "18mg",
+   "C": "subcutaneous"
+ },
+ {
+   "A": "Oxycodone and naloxone",
+   "B": "12mg",
+   "C": "sublingual"
+ }
+]

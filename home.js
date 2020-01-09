@@ -1,4 +1,14 @@
 const form = document.querySelector('.js-form');
+const sidebar = document.getElementById('sidenav');
+const button = document.getElementById('toggle');
+
+
+$('#toggle').click(
+  function(){
+    sidebar.classList.toggle('collapsed');
+    $( "#toggle" ).children().toggleClass('fa-toggle-off fa-toggle-on')
+  }
+)
 
 
 form.addEventListener('submit', event => {
@@ -7,7 +17,9 @@ console.log(event.target)
 var $i =$(`<tr class= "record"></tr>`)
 var icd  = "";
   for (var i = 0; i < event.target.length-1; i++) {
-    $i.append(`<td>${event.target[i].value}</td>`)
+    if(i != 2){
+        $i.append(`<td>${event.target[i].value}</td>`)
+    }
   }
   for (var i = 0; i < symptoms.length; i++) {
     console.log($i.first().val())
@@ -15,14 +27,59 @@ var icd  = "";
       icd = symptoms[i]["Code"]
     }
   }
+
+
+$("#reviewModalMedication").append(event.target[2].value)
+
 $i.append(`<td>${icd}</td>`)
 $("#syptom").append($i)
-$i.append("<button>remove</button>")
-$("button").click(function(){
+$i.append("<i class='far fa-trash-alt'></i>")
+$(".far").click(function(){
   $j= this.parentElement
   $j.remove()
 })
+
+$('#exampleModalLong').modal('show');
 })
+
+
+
+
+$('#todayDate').text(new Date().toLocaleDateString())
+// Place Order
+$('#submitMed').click(function() {
+  $('#exampleModalLong').modal('show');
+});
+$('#easyEditor').click(function() {
+  $('#modal4').modal('show');
+
+});
+$("#modalSaveChange").click(function(){
+  $("#textNode").text(`Subjective
+Patient complaints of low back pain. He says his pain started on December 3th. He rated his pain 7/10.
+Vitals
+Blood Pressure: 120/80
+PulO2:98%
+Blood Glucose:88%
+Level of Pain: 7/10
+Temperature: 98 F
+Does Patient Smoke:  No
+Does Patient Drink: No
+How often Na
+`)
+$('#modal4').modal('hide')
+})
+
+$('#modalReviewChange').click(function() {
+  $('#modal5').modal('show');
+  $('#modal2').modal('hide');
+});
+$("#proccedModal").click(function() {
+  $("#modal2").modal('show');
+  $('#exampleModalLong').modal('hide');
+  $("#modalPatientsName").text($("#patientname").text())
+});
+
 
 // pushing patient data
 $(function(){
@@ -34,6 +91,9 @@ $(function(){
     $("#patientDOB").text(findPatient(firstPatientName)["Birthday"])
     $("#patientPhone").text(findPatient(firstPatientName)["Phone"])
     $("#patientEmail").text(findPatient(firstPatientName)["Email"])
+    $("#patientAllergy").text(findPatient(firstPatientName)["Allergy"])
+    $("#patientMedication").text(findPatient(firstPatientName)["Medication"])
+
   }
   patientName.forEach(val => val.addEventListener("click",function(){
     var name = val.innerText
@@ -41,9 +101,14 @@ $(function(){
      $("#patientDOB").text(findPatient(name)["Birthday"])
      $("#patientPhone").text(findPatient(name)["Phone"])
      $("#patientEmail").text(findPatient(name)["Email"])
+     $("#patientAllergy").text(findPatient(name)["Allergy"])
+     $("#patientMedication").text(findPatient(name)["Medication"])
+
   })
   )
 })
+
+
 
 // pushing syptomdata
 $(function(){
@@ -58,6 +123,19 @@ $(function(){
   }
 });
 
+
+$(function(){
+  var $medicationitems = $("<datalist id='medicationresults'></datalist>")
+  for (var i = 0; i < symptoms.length; i++) {
+    $.each(medications[i], function( key, val ) {
+      if(key == "Medication"){
+        $medicationitems.append( "<option>" + val + "</option>" );
+      }
+    });
+    $($medicationitems).appendTo("#medName");
+  }
+});
+
 function findPatient(name){
   var patient ={}
   for (var i = 0; i < patients.length; i++) {
@@ -69,6 +147,12 @@ function findPatient(name){
   return patient
 }
 
+function randomDate(start, end, startHour, endHour) {
+  var date = new Date(+start + Math.random() * (end - start));
+  var hour = startHour + Math.random() * (endHour - startHour) | 0;
+  date.setHours(hour);
+  return date;
+}
 
 function pushPatientData(data){
   var items = [];
@@ -76,17 +160,6 @@ function pushPatientData(data){
     var lastName =  data[i]["Name"];
      items.push(lastName);
   }
-items.forEach(val => $(".sidenav").append("<a class='patientsName' href='#''>" + val +"</a>") )
 
-
-
-  // for (var i = 0; i < 10; i++) {
-  //   var iter = data[i];
-  //   $.each(symptoms[i], function( key, val ) {
-  //     if(key == "name"){
-  //       $(".sidenav").append( "<a>" + val.last + "," + val.first + "</a>" );
-  //       console.log(val.last)
-  //     }
-  //   });
-  // }
+items.forEach((val, index) => $("#content").append("<div class='container patientContainer'><div class='row'><div class='patientPic'><img class='img-fluid' src='lib/randomPeo/" + index + ".jpg'></div><div class='patientAdmittedDate' class='col-md-8'><a href='#' class='patientsName'>" + val +"</a></div></div></div>") )
 }

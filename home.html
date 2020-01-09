@@ -7,40 +7,66 @@
       <link rel="stylesheet" href="lib\stylesheet\bootstrap.min.css">
       <!-- Our Custom CSS -->
       <link rel="stylesheet" href="style.css">
+      <!-- font awesome stylesheet  -->
+      <link rel="stylesheet" href="lib\stylesheet\font-awesome.min.css">
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
+      <script src="lib\javascript\fontawesomefont.js" charset="utf-8"></script>
       <!-- Font Awesome JS -->
       <script src="lib\fontawesome\solid.js" charset="utf-8"></script>
       <script src="lib\fontawesome\fontawesome.js" charset="utf-8"></script>
   </head>
   <body>
 
-  <div class="sidenav">
-    <div class="container">
-      <img src="lib\image\Untitled-1.png" alt="">
+  <div id="sidenav">
+    <div id="content">
+
+     <div class="container">
+       <img src="lib\image\Untitled-1.png" alt="">
+     </div>
+     <div id="sidenav-input" class= "container">
+       <div class="row">
+         <div class="col-md-10"><input type="text" class= "form-control"></div>
+         <div class="col-md-2"> <i class="fas fa-search"></i></div>
+       </div>
+       <h5>Patients List:</h5>
+     </div>
     </div>
-    <input type="text" class= "form-control">
+
   </div>
 
 <div class="container-fluid">
   <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light col-md-8 offset-md-2">
+        <div id="toggle"><i class="fas fa-toggle-on"></i></div>
+  <a class="navbar-brand" href="#">Patient Info</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Medical History<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
     <div class="jumbotron col-md-8 offset-md-2">
+      <h4>Appointment Details: <span style= "float:right;" >Today's date: <span id="todayDate"></span></span></h4>
+      <hr>
       <div class="container">
         <div class="row">
           <div class="col-md-6">
+              <h4>Patient's Info</h4>
             <table>
               <tr>
                 <td>
-                  <h4>Patient Name:</h4>
+                  <h6>Patient Name:</h6>
                 </td>
                 <td>
-                  <h4 id="patientname"></h4>
+                  <h6 id="patientname"></h6>
                 </td>
               </tr>
               <tr>
                 <td>
-                    <h4>Patient Email:</h4>
+                    <h6>Patient Email:</h6>
                 </td>
                 <td>
                   <p id="patientEmail"></p>
@@ -48,17 +74,31 @@
               </tr>
               <tr>
                 <td>
-                  <h4>Patients's Phone:</h4>
+                  <h6>Patients's Phone:</h6>
                 </td>
                 <td>
                   <p id="patientPhone"></p>
                 </td>
               </tr>
+
+             </table>
+          </div>
+          <div class="col-md-6">
+              <tr><th><h6>&nbsp</h6></th></tr>
+            <table>
               <tr>
-                <td>  <h4>Patient DOB:</h4></td>
+                <td>  <h6>Patient DOB:</h6></td>
                 <td><p id="patientDOB"></p> </td>
               </tr>
-             </table>
+              <tr>
+                <td>  <h6>Patient Allergy:</h6></td>
+                <td><p id="patientAllergy"></p></td>
+              </tr>
+              <tr>
+                <td>  <h6>Patient Medication:</h6></td>
+                <td><p id="patientMedication"></p></td>
+              </tr>
+            </table>
           </div>
            </div>
            </div>
@@ -68,45 +108,240 @@
     <div class="col-md-8 offset-md-2">
     <!-- Syptom checker -->
     <h4>Symptoms</h4>
-    <div >
+    <div>
       <form id="syptomsdropdown"class="js-form form-group" action="index.html" method="post">
         <label for="symptom">Symptom</label>
         <input class="form-control-sm" type="text" name="symptom" value="" list="syptomsresults" autocomplete="on">
         <label for="date">date</label>
-        <input class="form-control-sm" type="date" class= "date" name="date" value="">
+        <input class="form-control-sm" type="date" id="displaydate" class= "date" name="date" value="">
+        <h4>Notes</h4>
+        <textarea id="textNode" name="name" rows="4
+        " cols="80"></textarea>
+        <a href="#" id="easyEditor">Easy Editor</a>
         <input class="btn btn-primary" type="submit" name="submit" value="Submit">
     </form>
-      <table class="table" id="syptom">
-          <tr>
-            <th>Syptom</th>
-            <th>Onset Date</th>
-            <th>icd Code</th>
-            <th></th>
-          </tr>
-    </table>
-    <h4>Medication</h4>
-    <div >
-      <form id="medicationdropdown" class="js-form form-group" action="index.html" method="post">
-        <label for="symptom">Medication</label>
-        <input class="form-control-sm" type="text" name="symptom" value="" list="syptomsresults" autocomplete="on">
-        <label for="date">date</label>
-        <input class="form-control-sm" type="date" class= "date" name="date" value="">
-        <input class="btn btn-primary" type="submit" name="submit" value="Submit">
-    </form>
-      <table class="table" id="syptom">
-          <tr>
-            <th>Syptom</th>
-            <th>Onset Date</th>
-            <th>icd Code</th>
-            <th></th>
-          </tr>
-    </table>
-    </div>
-    </div>
+
+
     </div>
   </div>
 
 
+  </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Alert</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>I found 1 possible Medication</h4>
+        <div id="modelCheckmark">
+          <i class="fas fa-check-square fa-10x"></i>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="proccedModal">Proceed</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Alert</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Prescription</h4>
+        <form action="">
+          <table>
+      <tbody>
+        <tr >
+          <td >Patient Name:</td>
+          <td id="modalPatientsName"></td>
+        </tr>
+        <tr >
+        <td >Medication Name</td>
+        <td><input type="text" value = "Acetaminophen" id="medName" list="medicationresults" autocomplete="on"></td>
+        </tr>
+        <tr >
+        <td >Medication Dose</td>
+        <td ><input type="text" value="Immediate-release: 325 mg to 1 g " id="medDose"></td>
+        </tr>
+        <tr>
+        <td>Medication Route</td>
+        <td><input type="text" value="orally" id="medRoute"></td>
+        </tr>
+        <tr >
+        <td >Medication Time</td>
+        <td ><input type="text" value ="every 4 to 6 hours"></td>
+        </tr>
+      </tbody>
+</table>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="modalReviewChange">Save Change</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Alert</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Success Submitted</h4>
+        <div id="modelCheckmark">
+          <i class="fas fa-check-square fa-10x"></i>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Alert</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <h4>Notes:</h4>
+          <hr>
+          <p id="reviewModalMedication"></p>
+        </div>
+        <table class="table" id="syptom">
+            <tr>
+              <th>Syptom</th>
+              <th>Onset Date</th>
+              <th>icd Code</th>
+              <th></th>
+            </tr>
+      </table>
+      <table>
+        <tr >
+        <td >Medication Name</td>
+        <td><input type="text" value = "Acetaminophen" id="medName" list="medicationresults" autocomplete="on"></td>
+        </tr>
+        <tr >
+        <td >Medication Dose</td>
+        <td ><input type="text" value="Immediate-release: 325 mg to 1 g " id="medDose"></td>
+        </tr>
+        <tr>
+        <td>Medication Route</td>
+        <td><input type="text" value="orally" id="medRoute"></td>
+        </tr>
+        <tr >
+        <td >Medication Time</td>
+        <td ><input type="text" value ="every 4 to 6 hours"></td>
+        </tr>
+      </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <a  href="lib\file\winter.pdf" class="btn btn-primary" id="placeOrder">Place Order</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Form</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Subjective</label>
+          <textarea  name="name" rows="8" cols="60">
+            Patient complaints of low back pain. He says his pain started on December 3th. He rated his pain 7/10.
+          </textarea>
+          <small id="emailHelp" class="form-text text-muted">Write Down what patients is complainting</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Blood Pressure:</label>
+          <input type="text" value="120/80"  class="form-control" id="PuslO2" >
+          <label for="exampleInputPassword1">PuslO2:</label>
+          <input type="text" class="form-control" id="soapItemPul" value="98%">
+          <label for="soapItem">Blood Glucose:</label>
+          <input type="text" value="88%"class="form-control" id="soapItemGlu" >
+          <label for="soapItem">Temperature:</label>
+          <input type="text" value="98 F"class="form-control" id="soapItemTem" >
+          <label for="soapItem">Level Pain:</label>
+          <input type="text" value="7/10" class="form-control" id="soapItemPain" >
+        </div>
+        <div class="form-group form-check">
+          <label class="form-check-label" style:"display:block;"for="exampleCheck1">Does Patient smoke</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">Yes</option>
+              <option value="2">no</option>
+            </select>
+          </div>`
+          <label class="form-check-label"style:"display:block;" for="exampleCheck1">Does Patient drink</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Options</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">Yes</option>
+              <option value="2">no</option>
+            </select>
+          </div>`
+          <label for="exampleInputPassword1">How often</label>
+          <input type="password" value="NA" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="modalSaveChange">Save Change</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- jQuery CDN - Slim version (=without AJAX) -->
 <script src="lib\javascript\jquery-3.4.1.min.js" charset="utf-8"></script>
@@ -118,7 +353,9 @@
 <script type="text/javascript" src = "symptom.js">
 </script>
 <script type="text/javascript" src = "patientInfo.js">
+
 </script>
+<script src="Medication.js" charset="utf-8"></script>
 <script type="text/javascript" src = "home.js">
 </script>
 

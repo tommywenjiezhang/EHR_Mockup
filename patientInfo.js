@@ -1,7 +1,7 @@
 var patients = [
 {
 Name: "Winter",
-Birthday: "04/16/2020",
+Birthday: "04/16/1989",
 Email: "cubilia@ligula.co.uk",
 Phone: "1-400-719-0563",
 Allergy: "Latex",
